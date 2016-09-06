@@ -1,6 +1,20 @@
  (function() {
+     
+     /**
+     * @function SongPlayer
+     * @desc Returns SongPlayer object containing various functions, attributes, and methods
+     *  relating to the playing and pausing of a song object in the album page
+     * @returns {Object}
+     */
+     
      function SongPlayer() {
          var SongPlayer = {};
+
+         /**
+         * @desc current song audio file placeholder
+         * @type {Object}
+         */
+         
          var currentSong = null;
 
          /**
@@ -30,17 +44,32 @@
             currentSong = song;
          };
          
+         /**
+         * @function playSong
+         * @desc Plays file loaded as currentBuzzObject and sets playing property of song object 
+         *  to true
+         * @param {Object} song
+         */
+         
+         var playSong = function(song) {
+             currentBuzzObject.play();
+             song.playing = true;
+         }
+         
+         
          SongPlayer.play = function(song) {
              if (currentSong !== song) {
                  setSong(song);
-                 currentBuzzObject.play();
-                 song.playing = true;
+                 //currentBuzzObject.play();
+                 //song.playing = true;
+                 playSong(song);
              } else if (currentSong === song) {
                  if (currentBuzzObject.isPaused()) {
                      currentBuzzObject.play();
                  }
              }
          };
+         
          SongPlayer.pause = function(song) {
              currentBuzzObject.pause();
              song.playing = false;
