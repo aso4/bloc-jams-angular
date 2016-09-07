@@ -177,8 +177,8 @@
              }
          };         
          
-         SongPlayer.setVolume() = function(volume) {
-             currentBuzzObject.setVolume(volume);
+         SongPlayer.setVolume = function(volume) {
+             SongPlayer.volume = currentBuzzObject.setVolume(volume);
          };
          
          return SongPlayer;
