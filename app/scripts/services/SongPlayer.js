@@ -38,6 +38,8 @@
          */
          
          SongPlayer.currentSong = null;
+         
+         SongPlayer.volume = null;
 
          /**
          * @desc Buzz object audio file
@@ -174,6 +176,11 @@
                  currentBuzzObject.setTime(time);
              }
          };         
+         
+         SongPlayer.setVolume() = function(volume) {
+             currentBuzzObject.setVolume(volume);
+         };
+         
          return SongPlayer;
      }
      angular
