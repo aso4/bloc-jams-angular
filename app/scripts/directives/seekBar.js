@@ -13,7 +13,9 @@
              templateUrl: '/templates/directives/seek_bar.html',
              replace: true,
              restrict: 'E',
-             scope: { },
+             scope: {
+                 onChange: '&'
+             },
              link: function(scope, element, attributes) {
                  /**
                  * @desc Holds the value of the seek bar, such as the currently playing song time or the current volume. Default value is 0.
@@ -32,6 +34,14 @@
                  */                 
                  var seekBar = $(element);
 
+                 attributes.$observe('value', function(newValue) {
+                     scope.value = newValue;
+                 });
+
+                 attributes.$observe('max', function(newValue) {
+                     scope.max = newValue;
+                 });
+                 
                  /**
                  * @function percentString
                  * @desc A function that calculates a percent based on the value and maximum value of a seek bar.
@@ -65,6 +75,7 @@
                  scope.onClickSeekBar = function(event) {
                      var percent = calculatePercent(seekBar, event);
                      scope.value = percent * scope.max;
+                     notifyOnChange(scope.value);
                  };
 
                  /**
@@ -76,6 +87,7 @@
                          var percent = calculatePercent(seekBar, event);
                          scope.$apply(function() {
                              scope.value = percent * scope.max;
+                             notifyOnChange(scope.value);
                          });
                      });
 
@@ -84,6 +96,17 @@
                          $document.unbind('mouseup.thumb');
                      });
                  };
+
+                 /**
+                 * @function notifyOnChange
+                 * @desc Insert the local newValue variable as the value argument we pass into the SongPlayer.setCurrentTime() function called in the view.
+                 * @param {Number}
+                 */                   
+                 var notifyOnChange = function(newValue) {
+                     if (typeof scope.onChange === 'function') {
+                         scope.onChange({value: newValue});
+                     }
+                 };                 
              }
          };
      }
