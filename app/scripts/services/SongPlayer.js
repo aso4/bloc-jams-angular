@@ -181,6 +181,7 @@
              SongPlayer.volume = currentBuzzObject.setVolume(volume);
          };
          
+         
          return SongPlayer;
      }
      angular
