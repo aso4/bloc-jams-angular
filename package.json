@@ -8,8 +8,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "postinstall": "grunt",
-    "start": "grunt"
+    "postinstall": "grunt build",
+    "start": "node server.js"
   },
   "author": "Bloc Inc",
   "license": "ISC",
