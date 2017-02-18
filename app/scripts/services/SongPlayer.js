@@ -9,6 +9,7 @@
 
      function SongPlayer($rootScope, Fixtures) {
          var SongPlayer = {};
+         SongPlayer.playing = false;
 
          /**
          * @desc Store album information
@@ -82,6 +83,7 @@
          var playSong = function(song) {
              currentBuzzObject.play();
              song.playing = true;
+             SongPlayer.playing = true;
          }
 
          /**
@@ -93,6 +95,7 @@
          var stopSong = function(song) {
              currentBuzzObject.stop();
              song.playing = null;
+             SongPlayer.playing = false;
          }
 
          /**
@@ -122,6 +125,7 @@
              song = song || SongPlayer.currentSong;
              currentBuzzObject.pause();
              song.playing = false;
+             SongPlayer.playing = false;
          };
 
          /**

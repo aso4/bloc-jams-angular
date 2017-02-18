@@ -1,7 +1,7 @@
 (function() {
     function AlbumCtrl($scope, Fixtures, SongPlayer) {
         $scope.albumData = Fixtures.getAlbum();
-        songPlayer = SongPlayer;
+        $scope.songPlayer = SongPlayer;
 
         var hoveredSong = null;
 
@@ -14,8 +14,11 @@
           hoveredSong = null;
         };
         $scope.getSongState = function(song) {
-          if (song === songPlayer.currentSong && songPlayer.playing) {
+          if (song === $scope.songPlayer.currentSong && $scope.songPlayer.playing) {
             return 'playing';
+          }
+          else if (song === $scope.songPlayer.currentSong) {
+            return 'paused';
           }
           else if (song === hoveredSong) {
             return 'hovered';
@@ -24,12 +27,12 @@
         };
 
         $scope.playSong = function(song) {
-          songPlayer.setSong(this.album, song);
-          songPlayer.play();
+          $scope.songPlayer.setSong(this.album, song);
+          $scope.songPlayer.play();
          };
 
         $scope.pauseSong = function(song) {
-          songPlayer.pause();
+          $scope.songPlayer.pause();
          };
     }
 
