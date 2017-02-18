@@ -4,9 +4,9 @@
             <img src="/assets/images/album_covers/01.png" class="album-cover-art">
         </div>
         <div class="album-view-details column half" ng-controller="AlbumCtrl as album">
-            <h2 class="album-view-title"> {{ album.albumData.name }}</h2>
-            <h3 class="album-view-artist"> {{ album.albumData.artist }} </h3>
-            <h5 class="album-view-release-info">{{ album.albumData.year }} {{ album.albumData.label }}</h5>
+            <h2 class="album-view-title"> {{ albumData.name }}</h2>
+            <h3 class="album-view-artist"> {{ albumData.artist }} </h3>
+            <h5 class="album-view-release-info">{{ albumData.year }} {{ albumData.label }}</h5>
         </div>
     </section>
     <table class="album-view-song-list">
@@ -26,3 +26,11 @@
 </main>
 
 <ng-include src="'../templates/directives/player_bar.html'"></ng-include>
+
+<!--
+small errors happening all over the place.
+1. click a long song then a short song and the seek bar overflows.
+2. icons not centered in circle.
+3. can't click play/pause more than twice in a row.
+4. default song position is at around 33% when no song is loaded.
+-->
