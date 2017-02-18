@@ -1,0 +1,38 @@
+<section class="player-bar" ng-controller="PlayerBarCtrl as playerBar">
+     <div class="container">
+         <div class="control-group main-controls">
+             <a class="previous" ng-click="songPlayer.previous()">
+                 <span class="ion-skip-backward"></span>
+             </a>
+             <a class="play-pause">
+                 <span class='ion-play'
+                       ng-show="!songPlayer.currentSong.playing"
+                       ng-click="songPlayer.play()">
+                 </span>
+                 <span class='ion-pause'
+                       ng-show="songPlayer.currentSong.playing"
+                       ng-click="songPlayer.pause()">
+                 </span>
+             </a>
+             <a class="next" ng-click="songPlayer.next()">
+                 <span class="ion-skip-forward"></span>
+             </a>
+         </div>
+         <div class="control-group currently-playing">
+             <h2 class="song-name">{{ songPlayer.currentSong.title }}</h2>
+             <h2 class="artist-song-mobile">{{ songPlayer.currentSong.title }} - {{ albumData.artist }}</h2>
+             <h3 class="artist-name">{{ albumData.artist }}</h3>
+             <div class="seek-control">
+                 <seek-bar value="{{ songPlayer.currentTime }}" max="{{ songPlayer.currentSong.duration }}" on-change="songPlayer.setCurrentTime(value)"></seek-bar>
+                 <div class="current-time">{{ songPlayer.currentTime | timecode}}</div>
+                 <div class="total-time">{{ songPlayer.currentSong.duration | timecode}}</div>
+             </div>
+         </div>
+         <div class="control-group volume">
+             <span class="icon ion-volume-high"></span>
+
+                  <seek-bar class="seek-bar" value="50" max="100" on-change="songPlayer.setVolume(value)"></seek-bar>
+
+         </div>
+     </div>
+ </section>
