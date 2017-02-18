@@ -82,7 +82,7 @@
          */
          var playSong = function(song) {
              currentBuzzObject.play();
-             song.playing = true;
+             //song.playing = true;
              SongPlayer.playing = true;
          }
 
@@ -94,7 +94,7 @@
          */
          var stopSong = function(song) {
              currentBuzzObject.stop();
-             song.playing = null;
+             //song.playing = null;
              SongPlayer.playing = false;
          }
 
@@ -126,6 +126,13 @@
              currentBuzzObject.pause();
              song.playing = false;
              SongPlayer.playing = false;
+         };
+
+         SongPlayer.resume = function(song) {
+             song = SongPlayer.currentSong;
+             currentBuzzObject.play();
+             song.playing = true;
+             SongPlayer.playing = true;
          };
 
          /**

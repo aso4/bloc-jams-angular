@@ -17,7 +17,7 @@
           if (song === $scope.songPlayer.currentSong && $scope.songPlayer.playing) {
             return 'playing';
           }
-          else if (song === $scope.songPlayer.currentSong) {
+          else if (song === $scope.songPlayer.currentSong && $scope.songPlayer.currentTime != 0) {
             return 'paused';
           }
           else if (song === hoveredSong) {
@@ -34,6 +34,11 @@
         $scope.pauseSong = function(song) {
           $scope.songPlayer.pause();
          };
+
+       $scope.resumeSong = function(song) {
+         $scope.songPlayer.play();
+        };
+
     }
 
     angular
