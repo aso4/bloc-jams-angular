@@ -1,17 +1,17 @@
 {
-  "name": "bloc-frontend-project-starter",
+  "name": "BuzzJams",
   "version": "0.0.2",
-  "description": "Starter project for the Bloc Frontend Web Development",
+  "description": "Buzz API-integrated Music Player",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bloc/bloc-frontend-project-starter.git"
+    "url": "https://github.com/aso4/buzzjams"
   },
   "main": "server.js",
   "scripts": {
     "postinstall": "grunt build",
     "start": "node server.js"
   },
-  "author": "Bloc Inc",
+  "author": "Albert So",
   "license": "ISC",
   "dependencies": {
     "hapi": "~7.5.0",
@@ -21,7 +21,7 @@
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-hapi": "^0.8.1"      
+    "grunt-hapi": "^0.8.1"
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",

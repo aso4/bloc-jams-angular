@@ -22,8 +22,8 @@
                  templateUrl: '../templates/collection.html'
              });
      }
- 
+
      angular
-         .module('blocJams', ['ui.router'])
+         .module('buzzJams', ['ui.router'])
          .config(config);
  })();

@@ -112,6 +112,6 @@
      }
 
      angular
-         .module('blocJams')
+         .module('buzzJams')
          .directive('seekBar', ['$document', seekBar]);
  })();

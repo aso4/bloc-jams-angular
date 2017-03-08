@@ -190,6 +190,6 @@
          return SongPlayer;
      }
      angular
-         .module('blocJams')
+         .module('buzzJams')
          .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
  })();
