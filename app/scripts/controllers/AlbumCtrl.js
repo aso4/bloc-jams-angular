@@ -42,6 +42,6 @@
     }
 
     angular
-        .module('buzzJams')
+        .module('blocJams')
         .controller('AlbumCtrl', ['$scope', 'Fixtures', 'SongPlayer', AlbumCtrl]);
 })();

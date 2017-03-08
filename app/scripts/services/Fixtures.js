@@ -31,11 +31,11 @@
                  { title: 'Wrong phone number', duration: '2:15' }
              ]
          };
-
+         
          Fixtures.getAlbum = function() {
              return albumPicasso;
          };
-
+         
          Fixtures.getCollection = function(numberOfAlbums) {
              this.albums = [];
              for (var i=0; i < numberOfAlbums; i++) {
@@ -43,11 +43,11 @@
              }
              return this.albums;
          };
-
+         
          return Fixtures;
      }
-
+ 
      angular
-         .module('buzzJams')
+         .module('blocJams')
          .factory('Fixtures', Fixtures);
  })();
