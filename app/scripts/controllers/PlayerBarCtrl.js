@@ -5,6 +5,6 @@
      }
 
      angular
-         .module('blocJams')
+         .module('buzzJams')
          .controller('PlayerBarCtrl', ['$scope', 'Fixtures', 'SongPlayer', PlayerBarCtrl]);
  })();

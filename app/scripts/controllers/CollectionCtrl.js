@@ -4,6 +4,6 @@
      }
 
      angular
-         .module('blocJams')
+         .module('buzzJams')
          .controller('CollectionCtrl', ['Fixtures', CollectionCtrl]);
  })();
