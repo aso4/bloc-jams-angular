@@ -152,6 +152,7 @@
                  setSong(song);
                  playSong(song);
              }
+             song.playing = true;
          };
 
          /**
@@ -170,6 +171,7 @@
                  setSong(song);
                  playSong(song);
              }
+             song.playing = true;
          };
 
          /**
@@ -191,6 +193,7 @@
              var song = currentAlbum.songs[0];
              setSong(song);
              playSong(song);
+             song.playing = true;
          }
 
 
