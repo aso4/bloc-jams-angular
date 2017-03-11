@@ -6,8 +6,12 @@
              </a>
              <a class="play-pause">
                  <span class='ion-play'
-                       ng-show="!songPlayer.currentSong.playing"
-                       ng-click="songPlayer.play()">
+                       ng-show="!songPlayer.currentSong"
+                       ng-click="songPlayer.playFirstSong()">
+                 </span>
+                 <span class='ion-play'
+                       ng-show="!songPlayer.currentSong.playing && songPlayer.currentSong"
+                       ng-click="songPlayer.resume()">
                  </span>
                  <span class='ion-pause'
                        ng-show="songPlayer.currentSong.playing"
@@ -18,6 +22,7 @@
                  <span class="ion-skip-forward"></span>
              </a>
          </div>
+
          <div class="control-group currently-playing">
              <h2 class="song-name">{{ songPlayer.currentSong.title }}</h2>
              <h2 class="artist-song-mobile">{{ songPlayer.currentSong.title }} - {{ albumData.artist }}</h2>
