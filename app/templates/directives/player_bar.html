@@ -17,6 +17,8 @@
                        ng-show="songPlayer.currentSong.playing"
                        ng-click="songPlayer.pause()">
                  </span>
+                 <!-- when switching to new song in playlist, play icon showing instead of pause -->
+                 <!-- logic: currentSong is playing -->
              </a>
              <a class="next" ng-click="songPlayer.next()">
                  <span class="ion-skip-forward"></span>

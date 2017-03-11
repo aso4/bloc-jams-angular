@@ -114,6 +114,7 @@
                      currentBuzzObject.play();
                  }
              }
+             song.playing = true;
          };
 
          /**
