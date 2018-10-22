@@ -1,16 +1,24 @@
 const Hapi = require('hapi');
 const server = new Hapi.Server();
-server.connection({ port: process.env.PORT || 3000, host: 'localhost'});
+const port = process.env.PORT || 3000;
+server.connection({ port: port, host: 'localhost'});
 const path = require('path');
 server.route({
   method: 'GET',
   path: '/',
   handler: function (request, reply) {
-    reply('Hello, world!');
+    reply(path.join(__dirname, '/dist/index.html'));
   }
 });
-//
-//  = {
+
+server.route({
+  method: 'GET',
+  path: '/styles/{path}',
+  handler: function (request, reply) {
+    reply(createDirectoryRoute('styles'));
+  }
+});
+
 //         css: {
 //             method: 'GET',
 //             path: '/styles/{path*}',
@@ -41,12 +49,12 @@ server.route({
 //     };
 //
 // server.route([ routes.css, routes.js, routes.assets, routes.templates, routes.spa ]);
-// server.start( onServerStarted );
+
 server.start((err) => {
   if (err) {
     throw err;
   }
-  console.log( 'Server running on port ' );
+  console.log( 'Server running on port', port );
 })
 
 function createDirectoryRoute( directory ) {
