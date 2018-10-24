@@ -3,51 +3,40 @@ const server = new Hapi.Server();
 const port = process.env.PORT || 3000;
 server.connection({ port: port, host: 'localhost'});
 const path = require('path');
-// server.route([
-//   {
-//   method: 'GET',
-//   path: '/',
-//   handler: function (request, reply) {
-//     reply(path.join(__dirname, '/dist/index.html'));
-//   }},
-//   {
-//     method: 'GET',
-//     path: '/styles/{path}',
-//     handler: function (request, reply) {
-//       reply(createDirectoryRoute('styles'));
-//   }}
-// ]);
-
 const handler = function (request, reply) {
     return reply({ status: 'ok' });
 };
 
+server.register([require('inert')], function (err) {
+    if (err) console.log(err);
+});
+
 const routes = {
-        // css: {
-        //     method: 'GET',
-        //     path: '/styles/{path*}',
-        //     handler: createDirectoryRoute('styles')
-        // },
-        // js: {
-        //     method: 'GET',
-        //     path: '/scripts/{path*}',
-        //     handler: createDirectoryRoute('scripts')
-        // },
-        // assets: {
-        //     method: 'GET',
-        //     path: '/assets/{path*}',
-        //     handler: createDirectoryRoute('assets')
-        // },
-        // templates: {
-        //     method: 'GET',
-        //     path: '/templates/{path*}',
-        //     handler: createDirectoryRoute('templates')
-        // },
+        css: {
+            method: 'GET',
+            path: '/styles/{path*}',
+            handler: createDirectoryRoute('styles')
+        },
+        js: {
+            method: 'GET',
+            path: '/scripts/{path*}',
+            handler: createDirectoryRoute('scripts')
+        },
+        assets: {
+            method: 'GET',
+            path: '/assets/{path*}',
+            handler: createDirectoryRoute('assets')
+        },
+        templates: {
+            method: 'GET',
+            path: '/templates/{path*}',
+            handler: createDirectoryRoute('templates')
+        },
         spa: {
             method: 'GET',
             path: '/{path*}',
             handler: function (request, reply) {
-                 reply(path.join(__dirname, '/dist/index.html'));
+                 reply.file(path.join(__dirname, '/dist/index.html'));
             }
         }
     };
@@ -62,11 +51,9 @@ server.start((err) => {
 })
 
 function createDirectoryRoute( directory ) {
-    return {
-        directory: {
-            path: path.join(__dirname, '/dist/', directory)
-        }
-    };
+    return function (request, reply) {
+        reply(path.join(__dirname, '/dist/', directory));
+    }
 }
 
 module.exports = server;
