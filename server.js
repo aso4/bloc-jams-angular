@@ -15,12 +15,22 @@ const routes = {
         css: {
             method: 'GET',
             path: '/styles/{path*}',
-            handler: createDirectoryRoute('styles')
+            handler: {
+              directory: {
+                path: path.join(__dirname, '/dist/styles')
+              }
+            }
+            // createDirectoryRoute('styles')
         },
         js: {
             method: 'GET',
             path: '/scripts/{path*}',
-            handler: createDirectoryRoute('scripts')
+            handler: {
+              directory: {
+                path: path.join(__dirname, '/dist/scripts')
+              }
+            }
+            // handler: createDirectoryRoute('scripts')
         },
         assets: {
             method: 'GET',
@@ -41,7 +51,27 @@ const routes = {
         }
     };
 
-server.route([ routes.spa ]);
+    // server.route({
+    //     method: 'GET',
+    //     path: '/{param*}',
+    //     config: {
+    //         validate: {
+    //             query: {
+    //                 id: require('joi').number()
+    //             }
+    //         },
+    //         handler: {
+    //             directory: {
+    //                 path: '.',
+    //                 redirectToSlash: true,
+    //                 index: true
+    //             }
+    //         }
+    //     }
+    // });
+
+
+server.route([ routes.spa, routes.css, routes.js, routes.assets, routes.templates ]);
 
 server.start((err) => {
   if (err) {
