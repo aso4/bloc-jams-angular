@@ -20,7 +20,6 @@ const routes = {
                 path: path.join(__dirname, '/dist/styles')
               }
             }
-            // createDirectoryRoute('styles')
         },
         js: {
             method: 'GET',
@@ -30,17 +29,24 @@ const routes = {
                 path: path.join(__dirname, '/dist/scripts')
               }
             }
-            // handler: createDirectoryRoute('scripts')
         },
         assets: {
             method: 'GET',
             path: '/assets/{path*}',
-            handler: createDirectoryRoute('assets')
+            handler: {
+              directory: {
+                path: path.join(__dirname, '/dist/assets')
+              }
+            }
         },
         templates: {
             method: 'GET',
             path: '/templates/{path*}',
-            handler: createDirectoryRoute('templates')
+            handler: {
+              directory: {
+                path: path.join(__dirname, '/dist/templates')
+              }
+            }
         },
         spa: {
             method: 'GET',
@@ -50,26 +56,6 @@ const routes = {
             }
         }
     };
-
-    // server.route({
-    //     method: 'GET',
-    //     path: '/{param*}',
-    //     config: {
-    //         validate: {
-    //             query: {
-    //                 id: require('joi').number()
-    //             }
-    //         },
-    //         handler: {
-    //             directory: {
-    //                 path: '.',
-    //                 redirectToSlash: true,
-    //                 index: true
-    //             }
-    //         }
-    //     }
-    // });
-
 
 server.route([ routes.spa, routes.css, routes.js, routes.assets, routes.templates ]);
 
